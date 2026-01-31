@@ -1,4 +1,3 @@
-/*
 const age = 15;
 
 const drink = age >= 18 ? "wine" : "water";
@@ -12,7 +11,7 @@ if (age >= 18) {
 }
 console.log(drink2);
 console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
-*/
+
 const country = "Portugal";
 const population = 130;
 const habitants = population > 33 ? "above" : "below";

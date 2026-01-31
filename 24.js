@@ -1,4 +1,3 @@
-/*
 const hasDriversLicence = true; // esse é o A
 const hasGoodVision = true; // esse é o B
 
@@ -22,7 +21,6 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 } else {
   console.log("someone else should drive");
 }
-*/
 
 const country = prompt("Name the country u wanna live!");
 

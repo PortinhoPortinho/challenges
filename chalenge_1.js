@@ -1,7 +1,7 @@
-let massMark = 78;
-let massJohn = 92;
-let heightMark = 1.69;
-let heightJohn = 1.95;
+const massMark = 78;
+const massJohn = 92;
+const heightMark = 1.69;
+const heightJohn = 1.95;
 let BMIMark = massMark / (heightMark * heightMark);
 let BMIJohn = massJohn / (heightJohn * heightJohn);
 console.log(BMIJohn);

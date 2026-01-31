@@ -4,6 +4,9 @@ x += 10; // x= x + 10 = 25
 x *= 4; //x=x*4 = 100
 x++; // x=x+1 = 101
 x--; // x=x-1 = 100
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+const now = 2037;
 console.log(x);
 console.log(ageJonas > ageSarah);
 console.log(ageJonas >= 18);
@@ -12,5 +15,5 @@ console.log(now - 2018);
 console.log(now - 1991 > now - 2018);
 
 let z, y;
-z - y - 25 - 10 - 5;
+z = y - 25 - 10 - 5;
 console.log(z, y);
