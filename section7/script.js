@@ -1,16 +1,5 @@
 'use strict';
-/*
-console.log(document.querySelector('.message').textContent);
 
-document.querySelector('.message').textContent = '🎉Correct Number!';
-
-document.querySelector('.number').textContent = 13;
-document.querySelector('.score').textContent = 10;
-
-document.querySelector('.guess').value = 23;
-console.log(document.querySelector('.guess').value);
-
-*/
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 
@@ -18,11 +7,11 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
-  //caso nao tenha um numero no input do botao ao clicar no check
+  //if the input is empy or different from a number when clicking on check
   if (!guess) {
     document.querySelector('.message').textContent = '⛔️ No number!';
 
-    //caso o numero seja igual ao numero secreto ao clicar em check
+    //if the number is correct when clicking on check
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct Number!';
     document.querySelector('.number').textContent = secretNumber;
@@ -31,7 +20,7 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > Number(document.querySelector('.highscore').textContent)) {
       document.querySelector('.highscore').textContent = score;
     }
-    //caso o numero seja maior que o numero secreto ao clicar em check
+    //if the number is higher than the secret number when clicking on check
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too high!';
@@ -44,7 +33,7 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
 
-    //caso o numero seja menor que o numero secreto ao clicar em check
+    //if the number is lower than the secret number when clicking on check
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📉 Too low!';
