@@ -1,6 +1,6 @@
 'use strict';
 
-//console.log(this);
+console.log(this);
 
 const calcAge = function (birthYear) {
   console.log(2037 - birthYear);
