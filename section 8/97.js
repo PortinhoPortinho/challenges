@@ -32,5 +32,3 @@ function calcAge(birthYear) {
 const firstName = 'Jonas';
 
 calcAge(1991);
-//console.log(age);
-//printAge();

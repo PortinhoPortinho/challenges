@@ -24,14 +24,6 @@ const jessica = {
 const jessicaCopy = { ...jessica };
 jessicaCopy.lastName = 'Davis';
 
-/*
-console.log(jessica, jessicaCopy);
-jessicaCopy.familly.push('Mary');
-jessicaCopy.familly.push('John');
-
-console.log('Before', jessica);
-console.log('After', jessicaCopy);
-*/
 const jessicaClone = structuredClone(jessica);
 jessicaCopy.familly.push('Mary');
 jessicaCopy.familly.push('John');
