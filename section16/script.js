@@ -115,16 +115,19 @@ setTimeout(() => {
 
 const request = fetch('https://restcountries.com/v3.1/name/portugal')
 console.log(request);
-
+// country 1
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(function (response) {
-      console.log(response);
-      return response.json();
-    }).then(function (data) {
-      console.log(data);
-      renderCountry(data[0]);
-    });
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data[0]); 
+    const neighbor = data[0].borders?.[0];
+    if (!neighbor) return;
+    //country 2 - neighbor
+    return fetch(`https://restcountries.com/v3.1/alpha/${neighbor}`);
+  })
+      .then(response => response.json())
+      .then(data => renderCountry(data[0], 'neighbor'));
   };
   getCountryData('portugal');
   getCountryData('brazil');
