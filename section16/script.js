@@ -154,7 +154,7 @@ btn.addEventListener('click', function () {
 });
 getCountryData('portutugal');
 */
-
+/*
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
@@ -184,7 +184,7 @@ const getCountryData = function (country) {
 btn.addEventListener('click', function () {
   getCountryData('Brasil');
 });
-
+*/
 /*
 console.log('Test start');
 setTimeout(() => console.log('0 sec timer'), 0);
@@ -194,7 +194,6 @@ Promise.resolve('Resolved promise 2').then(res => {
   console.log(res);
 });
 console.log('Test end');
-*/
 const loteryPromise = new Promise(function (resolve, reject) {
   console.log('Lotery draw is happening 🎲');
   setTimeout(function () {
@@ -202,10 +201,11 @@ const loteryPromise = new Promise(function (resolve, reject) {
       resolve('🎉 You won the lotery!');
     } else {
       reject(new Error('😭 You lost the lotery!'));
-    }
-  }, 1000);
+  }
+}, 1000);
 });
-
+//////////////////////////////////////////////
+//new lecture
 loteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
 const wait = function (seconds) {
@@ -215,9 +215,9 @@ const wait = function (seconds) {
 };
 
 wait(1)
-  .then(() => {
-    console.log('i waited for 1 second');
-    return wait(1);
+.then(() => {
+  console.log('i waited for 1 second');
+  return wait(1);
   })
   .then(() => {
     console.log('i waited for 2 seconds');
@@ -232,6 +232,69 @@ wait(1)
     return wait(1);
   })
   .then(() => console.log('i waited for 5 seconds'));
+  
+  Promise.resolve('abc').then(x => console.log(x));
+  Promise.reject(new Error('Problem')).catch(x => console.log(x));
+  */
 
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem')).catch(x => console.log(x));
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => console.log(position),
+    //   err => reject(err),
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+console.log('Getting position...');
+getPosition().then(pos => console.log(pos));
+/*
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
+const renderCountry = function (data, className = '') {
+  const html = `
+  <article class="country ${className}">
+  <img class="country__img" src="${data.flags.png}" />
+  <div class="country__data">
+  <h3 class="country__name">${data.name.common}</h3>
+  <h4 class="country__region">${data.region}</h4>
+  <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(1)} million people</p>
+  <p class="country__row"><span>🗣️</span>${Object.values(data.languages)[0]}</p>
+  <p class="country__row"><span>💰</span>${Object.values(data.currencies)[0].name}</p>
+  </div>
+  </article>
+  `;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
+*/
+const locateMe = function () {
+  getPosition()
+    .then(pos => {
+      // const lat = pos.coords.latitude;
+      // const lng = pos.coords.longitude;
+      const { latitude: lat, longitude: lng } = pos.coords;
+      return fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
+      );
+    })
+
+    .then(response => response.json())
+    .then(data => {
+      console.log(`You are in ${data.city}, ${data.countryName}`);
+      return fetch(`https://restcountries.com/v3.1/name/${data.countryName}`);
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]))
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+    });
+};
+btn.addEventListener('click', locateMe);
