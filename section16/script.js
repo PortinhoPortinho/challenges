@@ -116,13 +116,24 @@ setTimeout(() => {
 // const request = new XMLHttpRequest();
 // request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
 // request.send();
+/*
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+    return response.json();
+  });
+};
 
 const request = fetch('https://restcountries.com/v3.1/name/portugal');
 console.log(request);
 // country 1
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
+      return response.json();
+    })
     .then(data => {
       renderCountry(data[0]);
       const neighbor = data[0].borders[0];
@@ -140,4 +151,37 @@ const getCountryData = function (country) {
 
 btn.addEventListener('click', function () {
   getCountryData('brazil');
+});
+getCountryData('portutugal');
+*/
+
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+    return response.json();
+  });
+};
+
+// country 1
+const getCountryData = function (country) {
+  getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbor = data[0].borders[0];
+      if (!neighbor) throw new Error('No neighbor found!');
+      //country 2 - neighbor
+      return getJSON(
+        `https://restcountries.com/v3.1/alpha/${neighbor}`,
+        'Country not found',
+      );
+    })
+    .then(data => renderCountry(data[0], 'neighbor'))
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    });
+};
+
+btn.addEventListener('click', function () {
+  getCountryData('australia');
 });
