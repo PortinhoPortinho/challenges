@@ -236,7 +236,7 @@ wait(1)
   Promise.resolve('abc').then(x => console.log(x));
   Promise.reject(new Error('Problem')).catch(x => console.log(x));
   */
-
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     // navigator.geolocation.getCurrentPosition(
@@ -246,9 +246,9 @@ const getPosition = function () {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
-
 console.log('Getting position...');
 getPosition().then(pos => console.log(pos));
+*/
 /*
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
@@ -275,6 +275,7 @@ const renderError = function (msg) {
   countriesContainer.style.opacity = 1;
 };
 */
+/*
 const locateMe = function () {
   getPosition()
     .then(pos => {
@@ -298,3 +299,48 @@ const locateMe = function () {
     });
 };
 btn.addEventListener('click', locateMe);
+*/
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+const whereAmI = async function () {
+  try {
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+    //reverse geocoding
+    const resGeo = await fetch(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`,
+    );
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+    const dataGeo = await resGeo.json();
+    const res = await fetch(
+      `https://restcountries.com/v3.1/name/${dataGeo.countryName}`,
+    );
+    if (!res.ok) throw new Error('Problem getting country data');
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(`${err} 💥💥💥`);
+    renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+  }
+};
+
+whereAmI();
+whereAmI();
+whereAmI();
+whereAmI();
+whereAmI();
+whereAmI();
+whereAmI();
+/*
+try {
+  let y = 1;
+  const x = 2;
+  x = 3;
+} catch (err) {
+  alert(err.message);
+}
+*/
