@@ -322,19 +322,23 @@ const whereAmI = async function () {
     const data = await res.json();
     console.log(data);
     renderCountry(data[0]);
+    return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
   } catch (err) {
     console.error(`${err} 💥💥💥`);
     renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    // reject promise returned from async function
+    throw err;
   }
 };
+console.log('1: Will get location');
+// const city = whereAmI();
+// console.log(city);
+whereAmI()
+  .then(city => console.log(city))
+  .catch(err => console.error(err))
+  .finally(() => console.log('Finished getting location'));
+console.log('2: finished getting location');
 
-whereAmI();
-whereAmI();
-whereAmI();
-whereAmI();
-whereAmI();
-whereAmI();
-whereAmI();
 /*
 try {
   let y = 1;
@@ -344,3 +348,12 @@ try {
   alert(err.message);
 }
 */
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(city);
+  } catch (err) {
+    console.error(err);
+  }
+  console.log('Finished getting location');
+})();
