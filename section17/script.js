@@ -65,6 +65,7 @@ console.log(shoppingCart2.cart);
 /////////////////////////////////////////////////////////////////////
 //new lecture
 //exporting module
+/*
 export.addToCart = function (product, quantity) {
   cart.push({ product, quantity });
   console.log(` ${quantity} ${product} added to cart)`);
@@ -78,3 +79,18 @@ export.orderStock = function (product, quantity) {
 };
 // import
 const { addToCart } = require('./shoppingcart.js');
+*/
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+import { use } from 'react';
+const state = {
+  cart: [
+    { product: 'apple', quantity: 2 },
+    { product: 'banana', quantity: 3 },
+  ],
+  user: { loggedIn: true },
+};
+const stateClone = Object.assign({}, state);
+const stateDeepClone = cloneDeep(state);
+state.user.loggedIn = false;
+console.log(state);
+console.log(stateClone);

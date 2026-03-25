@@ -1,0 +1,23 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "11_data_types.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PortinhoPortinho/challenges.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lodash-es": "^4.17.23"
+  },
+  "bugs": {
+    "url": "https://github.com/PortinhoPortinho/challenges/issues"
+  },
+  "homepage": "https://github.com/PortinhoPortinho/challenges#readme"
+}
