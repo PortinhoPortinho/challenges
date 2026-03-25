@@ -39,6 +39,7 @@ console.log(getLastPost2);
 */
 ///////////////////////////////////////////////////////////////////
 //new lecture
+/*
 const shoppingCart2 = (function () {
   const cart = [];
   const shippingCost = 10;
@@ -60,3 +61,20 @@ const shoppingCart2 = (function () {
 shoppingCart2.addToCart('apple', 2);
 shoppingCart2.addToCart('banana', 3);
 console.log(shoppingCart2.cart);
+*/
+/////////////////////////////////////////////////////////////////////
+//new lecture
+//exporting module
+export.addToCart = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(` ${quantity} ${product} added to cart)`);
+};
+export.cart = [];
+export.totalPrice = 237;
+export.totalQuantity = 23;
+export.orderStock = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(` ${quantity} ${product} ordered from supplier)`);
+};
+// import
+const { addToCart } = require('./shoppingcart.js');
