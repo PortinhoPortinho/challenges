@@ -4,7 +4,9 @@
   "description": "",
   "main": "11_data_types.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -14,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.9.4",
-    "lodash-es": "^4.17.23"
+    "lodash-es": "^4.17.23",
+    "parcel": "^2.16.4"
   },
   "bugs": {
     "url": "https://github.com/PortinhoPortinho/challenges/issues"

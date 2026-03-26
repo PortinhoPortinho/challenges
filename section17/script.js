@@ -79,8 +79,9 @@ export.orderStock = function (product, quantity) {
 };
 // import
 const { addToCart } = require('./shoppingcart.js');
-*/
+// */
 import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep2 from 'lodash-es';
 import { use } from 'react';
 const state = {
   cart: [
@@ -94,3 +95,6 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 console.log(state);
 console.log(stateClone);
+if (module.hot) {
+  module.hot.accept();
+}
