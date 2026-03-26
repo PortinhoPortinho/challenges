@@ -11,7 +11,7 @@
 // ShoppingCart.addToCart('banana', 3);
 // console.log(`total price: ${ShoppingCart.totalPrice}`);
 // console.log(`total quantity: ${ShoppingCart.tq}`);
-import add, { cart } from './shoppingcart.js';
+// import add, { cart } from './shoppingcart.js';
 console.log('importing module');
 add('apple', 2);
 add('banana', 3);
@@ -80,9 +80,9 @@ export.orderStock = function (product, quantity) {
 // import
 const { addToCart } = require('./shoppingcart.js');
 // */
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 // import cloneDeep2 from 'lodash-es';
-import { use } from 'react';
+
 const state = {
   cart: [
     { product: 'apple', quantity: 2 },

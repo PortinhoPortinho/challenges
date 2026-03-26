@@ -2,17 +2,17 @@
   "name": "starter",
   "version": "1.0.0",
   "description": "",
-  "main": "11_data_types.js",
+  "main": "section17/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "parcel section17/index.html",
+    "build": "parcel build section17/index.html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PortinhoPortinho/challenges.git"
   },
-  "author": "",
+  "author": "Portinho Portinho",
   "license": "ISC",
   "dependencies": {
     "leaflet": "^1.9.4",
