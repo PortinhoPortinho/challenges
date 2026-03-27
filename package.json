@@ -1,0 +1,26 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "section17/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel section17/index.html",
+    "build": "parcel build section17/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PortinhoPortinho/challenges.git"
+  },
+  "author": "Portinho Portinho",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "lodash-es": "^4.17.23",
+    "parcel": "^2.16.4"
+  },
+  "bugs": {
+    "url": "https://github.com/PortinhoPortinho/challenges/issues"
+  },
+  "homepage": "https://github.com/PortinhoPortinho/challenges#readme"
+}
